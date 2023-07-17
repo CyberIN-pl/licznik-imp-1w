@@ -15,7 +15,7 @@ esphome:
 
 dashboard_import:
   package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml
-  import_full_config: false # or true  
+  import_full_config: true #false # or true  
 
 esp8266:
   board: nodemcuv2
