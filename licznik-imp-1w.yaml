@@ -1,7 +1,8 @@
-#opis
-
+## Unity by LoopOn
+## https://loopon.tech/products/unity-sensor
 
 substitutions:
+
   name: "licznik-imp-1w"
   device_name: "licznik-imp-1w"
   device_make: "CyberIN.pl"
