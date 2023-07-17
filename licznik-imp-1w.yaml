@@ -9,14 +9,14 @@ esphome:
     version: "1.2.7"
 
 
+esp8266:
+  board: nodemcuv2
+
 dashboard_import:
   # package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml@main
   # import_full_config: True
   package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml@main
-  import_full_config: False
-
-esp8266:
-  board: nodemcuv2
+  import_full_config: False  
 
 # Enable logging
 logger:
