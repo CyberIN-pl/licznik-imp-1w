@@ -6,6 +6,10 @@ esphome:
     version: "Licznik-L3F 7.3.0"
   name_add_mac_suffix: true      
 
+dashboard_import:
+  package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml
+  import_full_config: false # or true  
+
 esp8266:
   board: nodemcuv2
 
