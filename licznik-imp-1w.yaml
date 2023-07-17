@@ -1,10 +1,17 @@
+substitutions:
+  name: "licznik-l3f"
+  friendly_name: "Licznik-L3F"
+
 esphome:
-  name: licznik-imp-1w
-  friendly_name: Licznik_imp_1W
+  name: "${name}"
+  # Friendly names are used where appropriate in Home Assistant
+  friendly_name: "${friendly_name}"
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
   project:
     name: "CyberIN.pl"
-    version: "Licznik-L3F 7.3.0"
-  name_add_mac_suffix: true      
+    version: "Licznik-L3F 7.3.0"  
 
 dashboard_import:
   package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml
