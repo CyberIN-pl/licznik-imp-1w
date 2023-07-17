@@ -1,23 +1,12 @@
-
-
-
-substitutions:
-  name: licznikimp1w
-  device_name: licznikimp1w
-  device_make: CyberIN
-  sw_version: "1.2.7"
-
-  # friendly_name: "licznik-imp-1w"
-
 esphome:
 
-  name: "${name}"
-  comment: "${device_name} by ${device_make}"
+  name: licznikimp1w
+  comment: licznikimp1w by CyberIN
   name_add_mac_suffix: true
   min_version: "2023.2.0"
   project:
-    name: "${device_make} .${device_name}"
-    version: "${sw_version}"
+    name: CyberIN.licznikimp1w
+    version: "1.2.7"
 
 
 dashboard_import:
