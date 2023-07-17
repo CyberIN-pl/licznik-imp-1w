@@ -1,6 +1,6 @@
 substitutions:
-  name: "licznik-l3f"
-  friendly_name: "Licznik-L3F"
+  name: "licznik-imp-1w"
+  friendly_name: "licznik-imp-1w"
 
 esphome:
   name: "${name}"
@@ -11,7 +11,7 @@ esphome:
   name_add_mac_suffix: true
   project:
     name: "CyberIN.pl"
-    version: "Licznik-L3F 7.3.0"  
+    version: "licznik-imp-1w 7.3.0"  
 
 dashboard_import:
   package_import_url: github://CyberIN-pl/licznik-imp-1w/blob/main/licznik-imp-1w.yaml
