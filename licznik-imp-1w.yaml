@@ -1,0 +1,109 @@
+esphome:
+  name: licznik-imp-1w
+  friendly_name: Licznik_imp_1W
+  project:
+    name: "CyberIN.pl"
+    version: "Licznik-L3F 7.3.0"
+  name_add_mac_suffix: true      
+
+esp8266:
+  board: nodemcuv2
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  reboot_timeout: 0s
+
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+
+captive_portal:
+
+web_server:
+  port: 80
+
+dallas:
+  - pin: D5   
+
+light:
+  - platform: status_led
+    # name: "Switch state"
+    id: led
+    pin: 
+      number: D4
+    internal: true
+
+  - platform: binary
+    id: red
+    output: light_output
+    internal: true 
+    restore_mode: ALWAYS_ON   
+
+output:
+  - id: light_output
+    platform: gpio
+    pin: D6    
+      # inverted: true
+
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: D2
+      inverted: true
+    internal: true
+    id: impuls
+    on_press:
+      then:
+        - light.turn_on: red
+    on_release:
+      then:
+        - light.turn_off: red
+   
+
+sensor:
+
+  - platform: wifi_signal
+    name: "Licznik Prądu ESPHOME Sygnał Wifi"
+    update_interval: 900s 
+
+  - platform: dallas
+    address: 0xad03009779e80428
+    name: "T1"      
+  - platform: dallas
+    address: 0x4203009779fdd328
+    name: "T2"   
+
+  - platform: pulse_counter
+    id: pc
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: True  
+    # unit_of_measurement: 'kW'
+    unit_of_measurement: 'W'
+    accuracy_decimals: 0    
+    name: 'Energia - moc'
+    device_class: power
+    update_interval: 60s
+    filters:
+      - debounce: 100ms
+      - multiply: 40 # (1500 / 60s = 1000W 1500/60 = 25 1000W / 25pulsów = 40) -> np25/min * 40 = 1000W
+    total:
+      name: "Energia - suma"
+
+      unit_of_measurement: 'kWh'
+      device_class: energy 
+      state_class: total_increasing
+      accuracy_decimals: 3
+      icon: "mdi:pulse"   
+      filters:
+        - multiply: 0.00066666666  # (1/1500 pulses per kWh)    
+    
