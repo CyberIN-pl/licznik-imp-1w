@@ -32,6 +32,7 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ap:
+    ssid: "Licznik Impulsow"
 
 captive_portal:
 
@@ -82,10 +83,12 @@ sensor:
     update_interval: 900s 
 
   - platform: dallas
-    address: 0xad03009779e80428
+    # address: 0x1f03009779d36328
+    index: 0
     name: "${name} - T1"      
   - platform: dallas
-    address: 0x4203009779fdd328
+    # address: 0x6b03009779f5fb28
+    index: 1
     name: "${name} - T2"   
 
   - platform: pulse_counter
@@ -94,7 +97,6 @@ sensor:
       number: D2
       mode: INPUT_PULLUP
       inverted: True  
-    # unit_of_measurement: 'kW'
     unit_of_measurement: 'W'
     accuracy_decimals: 0    
     name: "${name} - Moc Chwilowa"
@@ -113,4 +115,4 @@ sensor:
       icon: "mdi:pulse"   
       filters:
         - multiply: 0.001  # (1/1000 pulses per kWh) 
-  
+    
